@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Define your custom classes in base or components layers */
+@layer components {
+  .shadow-neumorphic {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15), -10px -10px 20px rgba(255, 255, 255, 0.1);
+  }
+
+  .shadow-neumorphic-hover {
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.2), -15px -15px 30px rgba(255, 255, 255, 0.2);
+    transition: box-shadow 0.3s ease;
+  }
+}
+
+/* For hover scaling */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}

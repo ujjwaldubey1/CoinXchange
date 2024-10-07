@@ -8,9 +8,13 @@ const Hero = () => {
 				<h1 className="text-4xl font-bold mb-6">
 					Explore our intuitive platform for seamless coin transactions.
 				</h1>
-				\
-				<div className="flex justify-center">
-					<img src={heroImage} alt="Graph" />
+
+				<div className="flex justify-center p-[2rem] h-600px">
+					<img
+						className="rounded-md shadow-neumorphic "
+						src={heroImage}
+						alt="Graph"
+					/>
 				</div>
 			</div>
 		</section>
