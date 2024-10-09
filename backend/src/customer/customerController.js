@@ -67,15 +67,14 @@ const loginCustomer = async (req, res) => {
             { expiresIn: "1d" }
         )
 
-        // Send response with the token and customer details (excluding the password, cauz its sensitive shhhh....)
-        const rescustomer = {
+        const resCustomer = {
             name: customer.name,
             email: customer.email,
             phoneNumber: customer.phoneNumber,
             token,
         }
 
-        return res.status(200).json(rescustomer)
+        return res.status(200).json(resCustomer)
     } catch (err) {
         console.error("Error while LOGGING IN the Customer", err)
         return res.status(500).json({
@@ -84,4 +83,35 @@ const loginCustomer = async (req, res) => {
     }
 }
 
-export { registerCustomer, loginCustomer }
+const getCustomerDetails = async (req, res) => {
+    const { customerId } = req.params
+    const customer = await customerModel.findOne({ _id: customerId })
+
+    if (!customer) {
+        return res.status(404).json({ message: "Customer not found" })
+    }
+
+    const {
+        name,
+        email,
+        password,
+        phoneNumber,
+        gender,
+        transactions,
+        favorites,
+    } = customer
+
+    const resCustomer = {
+        name,
+        email,
+        password,
+        phoneNumber,
+        gender,
+        transactions,
+        favorites,
+    }
+
+    return res.status(200).json(resCustomer)
+}
+
+export { registerCustomer, loginCustomer, getCustomerDetails }

@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
     })
 })
 
+app.use("/api/customer", customerRouter)
 app.use("/api/auth/customer", customerRouter)
 
 export default app
