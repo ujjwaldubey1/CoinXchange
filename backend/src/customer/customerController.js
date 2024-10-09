@@ -94,20 +94,12 @@ const getCustomerDetails = async (req, res) => {
             return res.status(404).json({ message: "Customer not found" })
         }
 
-        const {
-            name,
-            email,
-            password,
-            phoneNumber,
-            gender,
-            transactions,
-            favorites,
-        } = customer
+        const { name, email, phoneNumber, gender, transactions, favorites } =
+            customer
 
         const resCustomer = {
             name,
             email,
-            password,
             phoneNumber,
             gender,
             transactions,
