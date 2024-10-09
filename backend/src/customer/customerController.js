@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import customerModel from "./customerModel.js"
+import transactionModel from "../transaction/transactionModel.js"
 
 const registerCustomer = async (req, res) => {
     try {
@@ -85,33 +86,89 @@ const loginCustomer = async (req, res) => {
 
 const getCustomerDetails = async (req, res) => {
     const { customerId } = req.params
-    const customer = await customerModel.findOne({ _id: customerId })
 
-    if (!customer) {
-        return res.status(404).json({ message: "Customer not found" })
+    try {
+        const customer = await customerModel.findOne({ _id: customerId })
+
+        if (!customer) {
+            return res.status(404).json({ message: "Customer not found" })
+        }
+
+        const {
+            name,
+            email,
+            password,
+            phoneNumber,
+            gender,
+            transactions,
+            favorites,
+        } = customer
+
+        const resCustomer = {
+            name,
+            email,
+            password,
+            phoneNumber,
+            gender,
+            transactions,
+            favorites,
+        }
+
+        return res.status(200).json(resCustomer)
+    } catch (err) {
+        console.error("Error while FETCHING Customer Details", err)
+        return res.status(500).json({
+            message: "Error while FETCHING Customer Details",
+        })
     }
-
-    const {
-        name,
-        email,
-        password,
-        phoneNumber,
-        gender,
-        transactions,
-        favorites,
-    } = customer
-
-    const resCustomer = {
-        name,
-        email,
-        password,
-        phoneNumber,
-        gender,
-        transactions,
-        favorites,
-    }
-
-    return res.status(200).json(resCustomer)
 }
 
-export { registerCustomer, loginCustomer, getCustomerDetails }
+const getCustomerTransactions = async (req, res) => {
+    const { customerId } = req.params
+
+    try {
+        const customer = await customerModel.find({ _id: customerId })
+
+        if (!customer) {
+            return res.status(404).json({ message: "Customer not found" })
+        }
+
+        const transactions = await transactionModel.find({ sender: customerId })
+
+        return res.status(200).json(transactions)
+    } catch (err) {
+        console.error("Error while FETCHING Customer Transaction", err)
+        return res.status(500).json({
+            message: "Error while FETCHING Customer Transaction",
+        })
+    }
+}
+
+const getCustomerSingleTransaction = async (req, res) => {
+    const { customerId, transactionId } = req.params
+
+    try {
+        const customer = await transactionModel.findOne({ _id: customerId })
+
+        if (!customer) {
+            return res.status(404).json({ message: "Customer not found" })
+        }
+
+        const transaction = transactionModel.findOne({ _id: transactionId })
+
+        return res.status(200).json(transaction)
+    } catch (err) {
+        console.error("Error while FETCHING Customer Transaction", err)
+        return res.status(500).json({
+            message: "Error while FETCHING Customer Transaction",
+        })
+    }
+}
+
+export {
+    registerCustomer,
+    loginCustomer,
+    getCustomerDetails,
+    getCustomerTransactions,
+    getCustomerSingleTransaction,
+}
