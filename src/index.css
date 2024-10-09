@@ -3,22 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #F3C623;
-  --secondary-color: #10375C;
-  --light-white: #F4F6FF;
-  --light-orange: #EB8317;
+    --primary-color: #f3c623;
+    --secondary-color: #10375c;
+    --light-white: #f4f6ff;
+    --light-orange: #eb8317;
+    --btn-pd: 12px 15px;
 }
-
-
 @layer components {
-  .shadow-neumorphic {
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15), -10px -10px 20px rgba(255, 255, 255, 0.1);
-  }
+    .shadow-neumorphic {
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15),
+            -10px -10px 20px rgba(255, 255, 255, 0.1);
+    }
 
-  .shadow-neumorphic-hover {
-    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.2), -15px -15px 30px rgba(255, 255, 255, 0.2);
-    transition: box-shadow 0.3s ease;
-  }
+    .shadow-neumorphic-hover {
+        box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.2),
+            -15px -15px 30px rgba(255, 255, 255, 0.2);
+        transition: box-shadow 0.3s ease;
+    }
 
   
   .primary-color {
@@ -40,5 +41,21 @@
 
 
 .hover\:scale-105:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.btn {
+    @apply text-white text-xl p-[--btn-pd] rounded-md cursor-pointer font-semibold;
+    transition: all 0.3s ease;
+}
+.btn-secondary {
+    background-color: var(--secondary-color);
+    box-shadow: var(--secondary-shadow);
+}
+.btn-primary {
+    background-color: var(--primary-color);
+    box-shadow: var(--primary-shadow);
+}
+.btn-primary:hover {
+    background-color: #0b90cd;
 }
