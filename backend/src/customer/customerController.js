@@ -123,6 +123,51 @@ const getCustomerDetails = async (req, res) => {
     }
 }
 
+const updateCustomerDetails = async (req, res) => {
+    const { customerId } = req.params
+    const { name, email, password, phoneNumber, gender } = req.body
+
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+        const customer = await customerModel.findByIdAndUpdate(
+            customerId,
+            { name, email, password: hashedPassword, phoneNumber, gender },
+            { new: true, runValidators: true }
+        )
+
+        if (!customer) {
+            return res.status(404).json({ message: "Customer not found" })
+        }
+
+        return res.status(200).json(customer)
+    } catch (err) {
+        console.error("Error while UPDATING Customer Details", err)
+        return res.status(500).json({
+            message: "Error while UPDATING Customer Details",
+        })
+    }
+}
+
+const deleteCustomer = async (req, res) => {
+    const { customerId } = req.params
+
+    try {
+        const customer = await customerModel.findByIdAndDelete(customerId)
+
+        if (!customer) {
+            return res.status(404).json({ message: "Customer not found" })
+        }
+
+        res.status(200).json({ message: "Customer deleted successfully" })
+    } catch (err) {
+        console.error("Error while DELETING Customer Details", err)
+        return res.status(500).json({
+            message: "Error while DELETING Customer Details",
+        })
+    }
+}
+
 const getCustomerTransactions = async (req, res) => {
     const { customerId } = req.params
 
@@ -171,4 +216,6 @@ export {
     getCustomerDetails,
     getCustomerTransactions,
     getCustomerSingleTransaction,
+    updateCustomerDetails,
+    deleteCustomer,
 }
