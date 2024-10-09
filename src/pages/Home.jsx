@@ -3,6 +3,8 @@ import React from "react"
 import Card from "../components/Card"
 import Button from "../components/Button"
 import { Navbar } from "../components/Navbar"
+import Footer from "../components/Footer"
+import FeatureSection from "../components/FreatureSection"
 import Hero from "../components/Hero"
 import CTASection from "../components/CTASection"
 
@@ -44,6 +46,8 @@ const Home = () => {
 						</Button>
 					</Card>
 				</div>
+				<FeatureSection />
+				<Footer></Footer>
 			</div>
 		</>
 	)

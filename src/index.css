@@ -9,7 +9,6 @@
     --light-orange: #eb8317;
     --btn-pd: 12px 15px;
 }
-/* Define your custom classes in base or components layers */
 @layer components {
     .shadow-neumorphic {
         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15),
@@ -21,9 +20,26 @@
             -15px -15px 30px rgba(255, 255, 255, 0.2);
         transition: box-shadow 0.3s ease;
     }
+
+  
+  .primary-color {
+    color: var(--primary-color);
+  }
+
+  .secondary-color {
+    color: var(--secondary-color);
+  }
+
+  .light-white {
+    background-color: var(--light-white);
+  }
+
+  .light-orange {
+    color: var(--light-orange);
+  }
 }
 
-/* For hover scaling */
+
 .hover\:scale-105:hover {
     transform: scale(1.05);
 }

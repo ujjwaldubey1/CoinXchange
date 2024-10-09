@@ -1,0 +1,149 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f8fc;
+}
+
+/* Container for the whole page */
+.signup-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.signup-content {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* Left image section */
+.signup-image {
+  flex: 1;
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  border-radius: 15px;
+}
+
+.signup-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.image-text {
+  position: absolute;
+  text-align: center;
+  color:white;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+
+}
+
+.image-text h1 {
+  font-size: 1.5rem;
+}
+
+/* Right form section */
+.signup-form {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-form h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.signup-form .form-group {
+  margin-bottom: 20px;
+}
+
+.signup-form label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.signup-form .btn-submit {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.signup-form .btn-submit:hover {
+  background-color: #06223c;
+}
+
+.signup-form a {
+  color: #7b2df1;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.signup-form a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design for mobile */
+@media (max-width: 768px) {
+  .signup-content {
+    flex-direction: column;
+  }
+
+  .signup-image {
+    height: 200px;
+  }
+
+  .signup-form {
+    padding: 20px;
+  }
+
+  .image-text h1 {
+    font-size: 1.2rem;
+  }
+}
+.signup-form .check-label {
+  display: flex;
+  width: 100%;
+
+  input[type="checkbox"]{
+    width: 20px;
+  }
+}
