@@ -1,0 +1,20 @@
+import express from "express"
+import cors from "cors"
+import { config } from "./config/config.js"
+
+const app = express()
+
+app.use(
+    cors({
+        origin: config.frontendDomain,
+    })
+)
+app.use(express.json())
+
+app.get("/", (req, res) => {
+    return res.json({
+        message: "Welcome To CoinXchange",
+    })
+})
+
+export default app
