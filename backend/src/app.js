@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
     })
 })
 
+app.use("/api/customer", customerRouter)
 app.use("/api/auth/customer", customerRouter)
 
 app.use("/api/auth/seller", sellerRouter)
