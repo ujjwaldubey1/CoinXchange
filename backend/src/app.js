@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { config } from "./config/config.js"
+import customerRouter from "./customer/customerRouter.js"
 
 const app = express()
 
@@ -16,5 +17,7 @@ app.get("/", (req, res) => {
         message: "Welcome To CoinXchange",
     })
 })
+
+app.use("/api/auth/customer", customerRouter)
 
 export default app
