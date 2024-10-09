@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 app.use("/api/customer", customerRouter)
 app.use("/api/auth/customer", customerRouter)
 
+app.use("/api/seller", sellerRouter)
 app.use("/api/auth/seller", sellerRouter)
 
 export default app
