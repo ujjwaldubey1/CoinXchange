@@ -1,0 +1,13 @@
+.shadow-neumorphic {
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.7);
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.bg-wavy-header {
+  background-image: url('/path/to/your/wavy-image.svg');
+  background-size: cover;
+  height: 100px;
+}
