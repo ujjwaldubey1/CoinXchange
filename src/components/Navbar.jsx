@@ -17,6 +17,16 @@ export const Navbar = () => {
 		setShowLoginOptions(false)
 	}
 
+	const handleLoginDropdown = () => {
+		setShowLoginOptions(!showLoginOptions)
+		setShowSignupOptions(false) // Close the signup options when login is open
+	}
+
+	const handleSignupDropdown = () => {
+		setShowSignupOptions(!showSignupOptions)
+		setShowLoginOptions(false) // Close the login options when signup is open
+	}
+
 	return (
 		<nav className="relative">
 			<div className="flex justify-between items-center p-4 bg-black text-white">
@@ -26,6 +36,7 @@ export const Navbar = () => {
 					{isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
 				</div>
 
+				{/* Desktop Menu */}
 				<ul className="hidden md:flex space-x-4">
 					<li>
 						<a href="#" className="hover:text-yellow-400">
@@ -33,28 +44,25 @@ export const Navbar = () => {
 						</a>
 					</li>
 					<li>
-						<a href="#" className="hover:text-yellow-400">
+						<Link
+							to="/about-us"
+							className="hover:text-yellow-400 cursor-pointer">
 							About Us
-						</a>
-					</li>
-					<li>
-						<a href="#" className="hover:text-yellow-400">
-							Our Team
-						</a>
+						</Link>
 					</li>
 
-					{/* Log In Button with Hover for Dropdown */}
+					{/* Log In Button with Dropdown for Desktop */}
 					<li className="relative">
 						<button
 							className="bg-green-500 text-black px-4 py-2 rounded hover:bg-green-600"
-							onClick={() => setShowLoginOptions(!showLoginOptions)}>
+							onClick={handleLoginDropdown}>
 							Log In
 						</button>
 
 						{/* Dropdown for login options */}
 						{showLoginOptions && (
 							<div
-								className="absolute top-full mt-2 bg-white shadow-lg rounded-lg"
+								className="absolute top-full mt-2 bg-white shadow-lg rounded-lg z-50"
 								onMouseEnter={() => setShowLoginOptions(true)}
 								onMouseLeave={() => setShowLoginOptions(false)}>
 								<Link
@@ -71,16 +79,18 @@ export const Navbar = () => {
 						)}
 					</li>
 
-					{/* Get Started Button with Hover for Dropdown */}
-					<li className="relative" onClick={() => setShowSignupOptions(true)}>
-						<button className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600">
+					{/* Get Started Button with Dropdown for Desktop */}
+					<li className="relative">
+						<button
+							className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600"
+							onClick={handleSignupDropdown}>
 							Get Started
 						</button>
 
 						{/* Dropdown for signup options */}
 						{showSignupOptions && (
 							<div
-								className="absolute top-full mt-2 bg-white shadow-lg rounded-lg"
+								className="absolute top-full mt-2 bg-white shadow-lg rounded-lg z-50"
 								onMouseEnter={() => setShowSignupOptions(true)}
 								onMouseLeave={() => setShowSignupOptions(false)}>
 								<Link
@@ -118,9 +128,9 @@ export const Navbar = () => {
 							</a>
 						</li>
 						<li>
-							<a href="#" className="hover:text-yellow-400">
+							<Link to="/about-us" className="hover:text-yellow-400">
 								About Us
-							</a>
+							</Link>
 						</li>
 						<li>
 							<a href="#" className="hover:text-yellow-400">
@@ -129,19 +139,16 @@ export const Navbar = () => {
 						</li>
 
 						{/* Log In Button with Dropdown for Mobile */}
-						<li className="relative" onClick={() => setShowLoginOptions(true)}>
+						<li className="relative">
 							<button
 								className="bg-green-500 text-black px-4 py-2 rounded hover:bg-green-600"
-								onClick={() => setShowLoginOptions(!showLoginOptions)}>
+								onClick={handleLoginDropdown}>
 								Log In
 							</button>
 
 							{/* Dropdown for login options */}
 							{showLoginOptions && (
-								<div
-									className="absolute top-full mt-2 bg-white shadow-lg rounded-lg z-50"
-									onMouseEnter={() => setShowLoginOptions(true)}
-									onMouseLeave={() => setShowLoginOptions(false)}>
+								<div className="absolute top-full mt-2 bg-white shadow-lg rounded-lg z-50">
 									<Link
 										to="/login-customer"
 										className="block px-4 py-2 text-black hover:bg-gray-200">
@@ -157,17 +164,16 @@ export const Navbar = () => {
 						</li>
 
 						{/* Get Started Button with Dropdown for Mobile */}
-						<li className="relative" onClick={() => setShowSignupOptions(true)}>
-							<button className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600">
+						<li className="relative">
+							<button
+								className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600"
+								onClick={handleSignupDropdown}>
 								Get Started
 							</button>
 
 							{/* Dropdown for signup options */}
 							{showSignupOptions && (
-								<div
-									className="absolute top-full mt-2 bg-white shadow-lg rounded-lg"
-									onClick={() => setShowSignupOptions(true)}
-									onMouseLeave={() => setShowSignupOptions(false)}>
+								<div className="absolute top-full mt-2 bg-white shadow-lg rounded-lg z-50">
 									<Link
 										to="/sign-up-customer"
 										className="block px-4 py-2 text-black hover:bg-gray-200">

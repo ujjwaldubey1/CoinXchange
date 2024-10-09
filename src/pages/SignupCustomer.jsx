@@ -76,6 +76,9 @@ const Signup = () => {
 						<button type="submit" className="btn-submit bg-[--secondary-color]">
 							Sign Up
 						</button>
+						<p className="text-center mt-4">
+							Already have an account? <a href="/login">Login</a>
+						</p>
 					</form>
 				</div>
 			</div>

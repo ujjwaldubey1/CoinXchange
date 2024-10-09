@@ -1,29 +1,27 @@
 import React from "react"
 import "../Styles/Singup.css"
-import loginPageImg from "../assets/image/loginPageImg.webp" // Import image
+import loginSeller from "../assets/image/shopOwnerImg.webp" // Import image
 
 const Signup = () => {
 	return (
 		<div className="signup-container">
 			<div className="signup-content">
 				<div className="signup-image">
-					<img src={loginPageImg} alt="Astro background" />{" "}
-					{/* Use imported image */}
-					<div className="image-text">
-						<h1>
-							Dive into the future of finance—Sign up for CoinXchange now!
-						</h1>
-					</div>
+					<img src={loginSeller} alt="Astro background" />{" "}
 				</div>
 				<div className="signup-form">
 					<h2>Create Account</h2>
 					<form>
 						<div className="form-group">
+							<label htmlFor="name">Seller Name</label>
+							<input type="text" id="name" name="name" placeholder="Enter " />
+						</div>
+						<div className="form-group">
 							<label htmlFor="email">Email Id </label>
 							<input type="text" id="email" name="email" placeholder="Enter " />
 						</div>
 						<div className="form-group">
-							<label htmlFor="name">Phone NO</label>
+							<label htmlFor="name">Phone No</label>
 							<input
 								type="number"
 								id="name"
@@ -32,7 +30,7 @@ const Signup = () => {
 							/>
 						</div>
 						<div className="form-group">
-							<label htmlFor="username">Username</label>
+							<label htmlFor="username">Store Name</label>
 							<input
 								type="text"
 								id="username"
@@ -49,24 +47,19 @@ const Signup = () => {
 								placeholder="Enter password"
 							/>
 						</div>
-						<div className="form-group">
-							<select
-								id="Gender"
-								name="Gender"
-								className="mt-2 block w-full px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500">
-								<option className="" value="" disabled selected>
-									Select your gender
-								</option>
-								<option value="male">Male</option>
-								<option value="female">Female</option>
-								<option value="other">Other</option>
-							</select>
-						</div>
-						<div className="form-group">
-							<label htmlFor="DateOfBirt">Date Of Birth</label>
-							<input type="date" placeholder="Enter Your Date Of Birth" />
-						</div>
 
+						<div className="form-group">
+							<label htmlFor="City">Enter City</label>
+							<input type="text" placeholder="Enter City" />
+						</div>
+						<div className="form-group">
+							<label htmlFor="ShopName">Enter Shop Name</label>
+							<input type="text" placeholder="Enter Shope Name" />
+						</div>
+						<div className="form-group">
+							<label htmlFor="Catagory">Catagory</label>
+							<input type="text" placeholder="Enter Catagory" />
+						</div>
 						<div className="form-group">
 							<label className="flex gap-2 check-label">
 								<input className="inline" type="checkbox" name="terms" />
@@ -76,6 +69,9 @@ const Signup = () => {
 						<button type="submit" className="btn-submit bg-[--secondary-color]">
 							Sign Up
 						</button>
+						<p className="text-center mt-4">
+							Already have an account? <a href="#">Login</a>
+						</p>
 					</form>
 				</div>
 			</div>
