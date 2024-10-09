@@ -12,6 +12,18 @@
     box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.2), -15px -15px 30px rgba(255, 255, 255, 0.2);
     transition: box-shadow 0.3s ease;
   }
+  .primary-color{
+      color: #F3C623;
+  }
+  .secondary-color{
+    color: #10375C;
+  }
+  .light-white{
+    background-color:#F4F6FF;
+  }
+  .light-orange{
+    color: #EB8317;
+  }
 }
 
 /* For hover scaling */
