@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Define your custom classes in base or components layers */
+:root {
+  --primary-color: #F3C623;
+  --secondary-color: #10375C;
+  --light-white: #F4F6FF;
+  --light-orange: #EB8317;
+}
+
+
 @layer components {
   .shadow-neumorphic {
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15), -10px -10px 20px rgba(255, 255, 255, 0.1);
@@ -12,21 +19,26 @@
     box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.2), -15px -15px 30px rgba(255, 255, 255, 0.2);
     transition: box-shadow 0.3s ease;
   }
-  .primary-color{
-      color: #F3C623;
+
+  
+  .primary-color {
+    color: var(--primary-color);
   }
-  .secondary-color{
-    color: #10375C;
+
+  .secondary-color {
+    color: var(--secondary-color);
   }
-  .light-white{
-    background-color:#F4F6FF;
+
+  .light-white {
+    background-color: var(--light-white);
   }
-  .light-orange{
-    color: #EB8317;
+
+  .light-orange {
+    color: var(--light-orange);
   }
 }
 
-/* For hover scaling */
+
 .hover\:scale-105:hover {
   transform: scale(1.05);
 }

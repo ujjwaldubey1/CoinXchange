@@ -1,10 +1,11 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { FaBars, FaTimes } from "react-icons/fa"
 import { Link } from "react-router-dom"
 
 export const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [showSignupOptions, setShowSignupOptions] = useState(false)
+	const [showLoginOptions, setShowLoginOptions] = useState(false)
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen)
@@ -12,6 +13,8 @@ export const Navbar = () => {
 
 	const closeMenu = () => {
 		setIsOpen(false)
+		setShowSignupOptions(false)
+		setShowLoginOptions(false)
 	}
 
 	return (
@@ -39,19 +42,37 @@ export const Navbar = () => {
 							Our Team
 						</a>
 					</li>
-					<li>
-						<a
-							href="#"
-							className="bg-green-500 text-black px-4 py-2 rounded light-white">
+
+					{/* Log In Button with Hover for Dropdown */}
+					<li className="relative">
+						<button
+							className="bg-green-500 text-black px-4 py-2 rounded hover:bg-green-600"
+							onClick={() => setShowLoginOptions(!showLoginOptions)}>
 							Log In
-						</a>
+						</button>
+
+						{/* Dropdown for login options */}
+						{showLoginOptions && (
+							<div
+								className="absolute top-full mt-2 bg-white shadow-lg rounded-lg"
+								onMouseEnter={() => setShowLoginOptions(true)}
+								onMouseLeave={() => setShowLoginOptions(false)}>
+								<Link
+									to="/login-customer"
+									className="block px-4 py-2 text-black hover:bg-gray-200">
+									Log in as Customer
+								</Link>
+								<Link
+									to="/login-seller"
+									className="block px-4 py-2 text-black hover:bg-gray-200">
+									Log in as Seller
+								</Link>
+							</div>
+						)}
 					</li>
 
 					{/* Get Started Button with Hover for Dropdown */}
-					<li
-						className="relative"
-						onMouseEnter={() => setShowSignupOptions(true)}
-						onMouseLeave={() => setShowSignupOptions(false)}>
+					<li className="relative" onClick={() => setShowSignupOptions(true)}>
 						<button className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600">
 							Get Started
 						</button>
@@ -60,9 +81,8 @@ export const Navbar = () => {
 						{showSignupOptions && (
 							<div
 								className="absolute top-full mt-2 bg-white shadow-lg rounded-lg"
-								onMouseEnter={() => setShowSignupOptions(true)} // Keep open when hovering over the dropdown
-								onMouseLeave={() => setShowSignupOptions(false)} // Close when leaving the dropdown
-							>
+								onMouseEnter={() => setShowSignupOptions(true)}
+								onMouseLeave={() => setShowSignupOptions(false)}>
 								<Link
 									to="/sign-up-customer"
 									className="block px-4 py-2 text-black hover:bg-gray-200">
@@ -107,26 +127,59 @@ export const Navbar = () => {
 								Our Team
 							</a>
 						</li>
-						<li>
-							<a
-								href="#"
-								className="bg-green-500 text-black px-4 py-2 rounded hover:bg-green-600">
+
+						{/* Log In Button with Dropdown for Mobile */}
+						<li className="relative" onClick={() => setShowLoginOptions(true)}>
+							<button
+								className="bg-green-500 text-black px-4 py-2 rounded hover:bg-green-600"
+								onClick={() => setShowLoginOptions(!showLoginOptions)}>
 								Log In
-							</a>
+							</button>
+
+							{/* Dropdown for login options */}
+							{showLoginOptions && (
+								<div
+									className="absolute top-full mt-2 bg-white shadow-lg rounded-lg z-50"
+									onMouseEnter={() => setShowLoginOptions(true)}
+									onMouseLeave={() => setShowLoginOptions(false)}>
+									<Link
+										to="/login-customer"
+										className="block px-4 py-2 text-black hover:bg-gray-200">
+										Log in as Customer
+									</Link>
+									<Link
+										to="/login-seller"
+										className="block px-4 py-2 text-black hover:bg-gray-200">
+										Log in as Seller
+									</Link>
+								</div>
+							)}
 						</li>
-						<li>
-							<Link
-								to="/sign-up-customer"
-								className="block px-4 py-2 text-black bg-yellow-500 rounded hover:bg-yellow-600">
-								Sign up as Customer
-							</Link>
-						</li>
-						<li>
-							<Link
-								to="/sign-up-seller"
-								className="block px-4 py-2 text-black bg-yellow-500 rounded hover:bg-yellow-600">
-								Sign up as Seller
-							</Link>
+
+						{/* Get Started Button with Dropdown for Mobile */}
+						<li className="relative" onClick={() => setShowSignupOptions(true)}>
+							<button className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600">
+								Get Started
+							</button>
+
+							{/* Dropdown for signup options */}
+							{showSignupOptions && (
+								<div
+									className="absolute top-full mt-2 bg-white shadow-lg rounded-lg"
+									onClick={() => setShowSignupOptions(true)}
+									onMouseLeave={() => setShowSignupOptions(false)}>
+									<Link
+										to="/sign-up-customer"
+										className="block px-4 py-2 text-black hover:bg-gray-200">
+										Sign up as Customer
+									</Link>
+									<Link
+										to="/sign-up-seller"
+										className="block px-4 py-2 text-black hover:bg-gray-200">
+										Sign up as Seller
+									</Link>
+								</div>
+							)}
 						</li>
 					</ul>
 				</div>
