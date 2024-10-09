@@ -1,4 +1,3 @@
-import React from "react"
 import "../Styles/AboutUs.css"
 import UjjwalImg from "../assets/image/Ujjwla.jpg"
 import SumitImg from "../assets/image/sumit.jpg"

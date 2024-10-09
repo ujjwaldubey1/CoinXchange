@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import {
 	FaCog,
 	FaSignOutAlt,
@@ -8,8 +8,8 @@ import {
 	FaHistory,
 	FaPercentage,
 	FaBars,
-	FaHeart,
 	FaTimes,
+	FaHeart,
 } from "react-icons/fa"
 import { TbBrandCoinbase } from "react-icons/tb"
 import LogoImg from "../assets/image/CoinXchangeLogo.jpeg"
@@ -39,6 +39,22 @@ const UserProfile = () => {
 			amount: "500Rs",
 			date: "April 23, 2024",
 			time: "12:30 PM",
+		},
+	]
+
+	// Wishlist array with items
+	const wishlist = [
+		{
+			name: "Exclusive Leather Wallet",
+			store: "Store 1",
+		},
+		{
+			name: "Wireless Earbuds",
+			store: "Store 2",
+		},
+		{
+			name: "Smartwatch",
+			store: "Store 3",
 		},
 	]
 
@@ -136,25 +152,28 @@ const UserProfile = () => {
 							))}
 						</ul>
 					</div>
+
+					{/* Wishlist Section */}
 					<div className="bg-white p-6 md:p-10 rounded-lg shadow-lg neumorphism">
 						<h2 className="text-lg md:text-xl font-bold flex items-center">
-							Your Wishlist
+							<FaHeart className="mr-2 text-red-500" /> Your Wishlist
 						</h2>
 						<ul className="mt-4 space-y-4">
-							{/* Add your wishlist items here */}
-							<li className="p-4 neumorphism-btn">
-								<FaHeart className="text-red-500" />
-							</li>
-							<li className="p-4 neumorphism-btn">
-								<FaHeart className="text-red-500" />
-								Item 2
-							</li>
-							<li className="p-4 neumorphism-btn">
-								<FaHeart className="text-red-500" />
-								Item 3
-							</li>
+							{wishlist.length ? (
+								wishlist.map((item, index) => (
+									<li
+										key={index}
+										className="flex items-center neumorphism-btn p-4 bg-blue-100 text-gray-700 hover:bg-blue-200 hover:scale-105 transition transform ease-in-out duration-200 rounded-lg space-x-2 cursor-pointer">
+										<span className="font-bold">{item.name}</span>
+										<span className="ml-auto text-gray-500">
+											({item.store})
+										</span>
+									</li>
+								))
+							) : (
+								<p>No wishlist items found</p>
+							)}
 						</ul>
-						{/* Add your wishlist items here */}
 					</div>
 				</div>
 

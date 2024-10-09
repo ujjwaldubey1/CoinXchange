@@ -1,5 +1,3 @@
-import React from "react"
-
 const CTASection = () => {
 	return (
 		<section className="bg-black text-center py-10">

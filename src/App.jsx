@@ -1,4 +1,3 @@
-import React from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import Transactions from "./pages/Transactions"
@@ -9,6 +8,7 @@ import CustomerLogin from "./pages/CustomerLogin" // New page for
 import SellerLogin from "./pages/SellerLogin" // New page for Seller
 import AboutUs from "./pages/AboutUs"
 import UserProfile from "./pages/UserPrfile" // New page for User Profile
+import SellerProfile from "./pages/SellerProfile"
 function App() {
 	return (
 		<Router>
@@ -23,6 +23,7 @@ function App() {
 					<Route path="/login-seller" element={<SellerLogin />} />
 					<Route path="/about-us" element={<AboutUs />} />
 					<Route path="/user-profile" element={<UserProfile />} />
+					<Route path="/seller-profile" element={<SellerProfile />} />
 					{/* Route for Seller */}
 				</Routes>
 			</div>
