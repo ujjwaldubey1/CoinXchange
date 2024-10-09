@@ -30,7 +30,7 @@ const registerCustomer = async (req, res) => {
             gender,
         }
 
-        return res.status(201).send(rescustomer)
+        return res.status(201).send({ customer: rescustomer })
     } catch (err) {
         console.log("Error while REGISTERING the customer", err)
         res.status(500).send({
@@ -75,7 +75,7 @@ const loginCustomer = async (req, res) => {
             token,
         }
 
-        return res.status(200).json(resCustomer)
+        return res.status(200).json({ customer: resCustomer })
     } catch (err) {
         console.error("Error while LOGGING IN the Customer", err)
         return res.status(500).json({
@@ -94,19 +94,29 @@ const getCustomerDetails = async (req, res) => {
             return res.status(404).json({ message: "Customer not found" })
         }
 
-        const { name, email, phoneNumber, gender, transactions, favorites } =
-            customer
+        const {
+            name,
+            email,
+            phoneNumber,
+            gender,
+            dob,
+            coins,
+            transactions,
+            favorites,
+        } = customer
 
         const resCustomer = {
             name,
             email,
             phoneNumber,
             gender,
+            dob,
+            coins,
             transactions,
             favorites,
         }
 
-        return res.status(200).json(resCustomer)
+        return res.status(200).json({ customer: resCustomer })
     } catch (err) {
         console.error("Error while FETCHING Customer Details", err)
         return res.status(500).json({
