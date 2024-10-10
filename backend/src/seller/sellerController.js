@@ -83,7 +83,7 @@ const loginSeller = async (req, res) => {
             token,
         }
 
-        return res.status(200).json(resSeller)
+        return res.status(200).json({ seller: resSeller })
     } catch (err) {
         console.error("Error while LOGGING IN the Seller", err)
         return res.status(500).json({
