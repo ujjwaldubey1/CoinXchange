@@ -12,25 +12,28 @@ import UserProfile from "./pages/UserPrfile" // New page for User Profile
 import Dashboard from "./pages/Dashboard"
 
 function App() {
-	return (
-		<Router>
-			<div>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/transactions" element={<Transactions />} />
-					<Route path="/registration" element={<Registrations />} />
-					<Route path="/sign-up-customer" element={<SignupCustomer />} />{" "}
-					<Route path="/sign-up-seller" element={<SignupSeller />} />
-					<Route path="/login-customer" element={<CustomerLogin />} />
-					<Route path="/login-seller" element={<SellerLogin />} />
-					<Route path="/about-us" element={<AboutUs />} />
-					<Route path="/user-profile" element={<UserProfile />} />
-          <Route path="/customer/dashboard" element={<Dashboard />} />
-					{/* Route for Seller */}
-				</Routes>
-			</div>
-		</Router>
-	)
+    return (
+        <Router>
+            <div>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/transactions" element={<Transactions />} />
+                    <Route path="/registration" element={<Registrations />} />
+                    <Route
+                        path="/sign-up-customer"
+                        element={<SignupCustomer />}
+                    />{" "}
+                    <Route path="/sign-up-seller" element={<SignupSeller />} />
+                    <Route path="/login-customer" element={<CustomerLogin />} />
+                    <Route path="/login-seller" element={<SellerLogin />} />
+                    <Route path="/about-us" element={<AboutUs />} />
+                    <Route path="/user-profile" element={<UserProfile />} />
+                    <Route path="/customer/dashboard" element={<Dashboard />} />
+                    {/* Route for Seller */}
+                </Routes>
+            </div>
+        </Router>
+    )
 }
 
 export default App
